@@ -1,0 +1,223 @@
+
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+    POM : Project Object Model
+
+    Le fichier pom.xml est le fichier principal
+    de configuration d'un projet Maven.
+
+    Il permet de :
+    - Identifier le projet.
+    - Déclarer les dépendances.
+    - Configurer la version de Java.
+    - Compiler et tester l'application.
+    - Construire un fichier JAR ou WAR.
+-->
+
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+         https://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <!-- Version du modèle de configuration Maven -->
+    <modelVersion>4.0.0</modelVersion>
+
+    <!--
+        PROJET PARENT SPRING BOOT
+
+        Fournit une configuration Maven prédéfinie :
+        - Gestion des versions des dépendances.
+        - Configuration de plusieurs plugins Maven.
+        - Paramètres de compilation et de construction.
+
+        Il évite de déclarer manuellement les versions
+        de nombreuses bibliothèques compatibles.
+    -->
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>4.1.2</version>
+
+        <!-- Recherche le parent dans les dépôts Maven -->
+        <relativePath/>
+    </parent>
+
+    <!--
+        IDENTIFICATION DU PROJET
+
+        groupId    : identifiant de l'organisation.
+        artifactId : nom technique du projet.
+        version    : version de l'application.
+
+        SNAPSHOT indique une version en développement.
+    -->
+    <groupId>com.example</groupId>
+    <artifactId>ecommerce</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+
+    <!-- Informations descriptives facultatives -->
+    <name/>
+    <description/>
+    <url/>
+
+    <!-- Informations facultatives sur la licence -->
+    <licenses>
+        <license/>
+    </licenses>
+
+    <!-- Informations facultatives sur les développeurs -->
+    <developers>
+        <developer/>
+    </developers>
+
+    <!--
+        Informations sur le dépôt de code source
+        (Git, par exemple).
+    -->
+    <scm>
+        <connection/>
+        <developerConnection/>
+        <tag/>
+        <url/>
+    </scm>
+
+    <!--
+        VERSION DE JAVA
+
+        Le projet utilise Java 21.
+        Le JDK 21 doit être installé pour compiler
+        l'application avec cette configuration.
+    -->
+    <properties>
+        <java.version>21</java.version>
+    </properties>
+
+    <!--
+        DEPENDANCES DU PROJET
+
+        Une dépendance est une bibliothèque externe
+        utilisée par l'application.
+
+        Maven télécharge automatiquement les
+        bibliothèques nécessaires depuis les dépôts
+        configurés, notamment Maven Central.
+
+        Elles sont conservées localement dans :
+        ~/.m2/repository
+    -->
+    <dependencies>
+
+        <!--
+            SPRING DATA MONGODB
+
+            Permet de communiquer avec MongoDB,
+            une base de données NoSQL orientée documents.
+
+            Fournit notamment :
+            - @Document
+            - @Id
+            - @Field
+            - MongoRepository
+            - MongoTemplate
+
+            Simplifie les opérations CRUD :
+            Create, Read, Update, Delete.
+        -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-mongodb</artifactId>
+        </dependency>
+
+        <!--
+            SPRING WEB MVC
+
+            Permet de développer des applications Web
+            et des API REST utilisant HTTP.
+
+            Fournit notamment :
+            - @RestController
+            - @RequestMapping
+            - @GetMapping
+            - @PostMapping
+            - @PutMapping
+            - @DeleteMapping
+
+            Inclut Spring MVC et permet d'utiliser
+            un serveur Web embarqué, comme Tomcat.
+        -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-webmvc</artifactId>
+        </dependency>
+
+        <!--
+            TESTS SPRING DATA MONGODB
+
+            Fournit des outils pour tester
+            les composants d'accès à MongoDB.
+
+            La portée "test" signifie que cette
+            dépendance est utilisée uniquement
+            pour la compilation et l'exécution
+            des tests.
+        -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-mongodb-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <!--
+            TESTS SPRING WEB MVC
+
+            Fournit des outils pour tester
+            les contrôleurs et les API HTTP.
+
+            Permet notamment de tester les requêtes
+            et les réponses sans démarrer
+            nécessairement un serveur HTTP réel.
+        -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-webmvc-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+    </dependencies>
+
+    <!--
+        CONSTRUCTION DE L'APPLICATION
+
+        Cette section configure les plugins Maven
+        utilisés pendant la construction du projet.
+    -->
+    <build>
+        <plugins>
+
+            <!--
+                SPRING BOOT MAVEN PLUGIN
+
+                Permet notamment de :
+                - Exécuter l'application avec Maven.
+                - Construire un JAR exécutable.
+                - Inclure les dépendances nécessaires
+                  à l'exécution de l'application.
+
+                Commandes utiles :
+
+                mvn spring-boot:run
+
+                mvn clean package
+
+                java -jar target/ecommerce-0.0.1-SNAPSHOT.jar
+            -->
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+
+        </plugins>
+    </build>
+
+</project>
