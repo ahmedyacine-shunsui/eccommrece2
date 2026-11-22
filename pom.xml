@@ -1,20 +1,4 @@
-
 <?xml version="1.0" encoding="UTF-8"?>
-
-<!--
-    POM : Project Object Model
-
-    Le fichier pom.xml est le fichier principal
-    de configuration d'un projet Maven.
-
-    Il permet de :
-    - Identifier le projet.
-    - Déclarer les dépendances.
-    - Configurer la version de Java.
-    - Compiler et tester l'application.
-    - Construire un fichier JAR ou WAR.
--->
-
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
